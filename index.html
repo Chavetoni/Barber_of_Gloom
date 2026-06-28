@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barber of Gloom — Barber &amp; Stylist in McAllen, TX</title>
+<meta name="description" content="Barber of Gloom — cuts, colour &amp; styling by Aliyah in McAllen, TX. By appointment, book online on Booksy.">
+<meta name="theme-color" content="#4a0f1b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Barber of Gloom — Barber &amp; Stylist in McAllen, TX">
+<meta property="og:description" content="Cuts, colour &amp; styling by Aliyah in McAllen, TX. By appointment — book online on Booksy.">
+<meta property="og:image" content="uploads/pasted-1782164031002-0.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- TODO after deploy: add absolute <link rel="canonical">, og:url, and an absolute og:image URL once the domain is known -->
+<link rel="icon" href="uploads/throne-cat.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./lenis.min.js"></script>
+<style>
+  html.lenis, html.lenis body { height:auto; }
+  .lenis.lenis-smooth { scroll-behavior:auto !important; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior:contain; }
+  .lenis.lenis-stopped { overflow:hidden; }
+  html:not(.lenis) { scroll-behavior:smooth; }
+  body { margin:0; background:#4a0f1b; }
+  * { box-sizing:border-box; }
+  ::selection { background:#f6e3b8; color:#2a0710; }
+  a { color:inherit; text-decoration:none; }
+  section { scroll-margin-top:88px; }
+  .reveal { opacity:0; transform:translateY(32px); transition:opacity .85s ease, transform .85s cubic-bezier(.2,.75,.2,1); }
+  .reveal.in { opacity:1; transform:none; }
+  .svc-card { opacity:0; border:1.5px solid rgba(246,227,184,.28); border-radius:14px; background:rgba(246,227,184,.04); transition:opacity .6s ease, transform .8s cubic-bezier(.2,.85,.2,1), border-color .3s ease, background .3s ease, box-shadow .3s ease; will-change:transform,opacity; }
+  .svc-card.from-left { transform:translateX(-70px) scale(.96); }
+  .svc-card.from-right { transform:translateX(70px) scale(.96); }
+  .svc-card.in { opacity:1; transform:translateX(0) scale(1); }
+  .svc-card.in:hover { border-color:rgba(246,227,184,.5); background:rgba(246,227,184,.07); box-shadow:0 16px 34px -18px rgba(0,0,0,.7); transform:translateY(-3px) scale(1); }
+  .svc-card.feat { border-color:#f6e3b8; }
+  .svc-badge { position:absolute; top:-10px; left:26px; padding:4px 11px; border-radius:999px; background:#f6e3b8; color:#3a0a13; font-size:9.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; box-shadow:0 6px 14px -6px rgba(0,0,0,.6); }
+  .svc-cta:hover { transform:translateY(-2px); box-shadow:0 16px 30px -10px rgba(0,0,0,.7); }
+  .svc-perf { width:132px; flex:none; position:relative; display:flex; align-items:center; justify-content:center; }
+  .svc-perf::before { content:''; position:absolute; left:0; top:8px; bottom:8px; width:1.5px; background:repeating-linear-gradient(to bottom, rgba(246,227,184,.45) 0 4px, transparent 4px 9px); }
+  @keyframes slowzoom { from { transform:scale(1.03); } to { transform:scale(1.13); } }
+  @keyframes heroUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
+  @keyframes loaderOut { 0%,70% { transform:translateY(0); opacity:1; } 100% { transform:translateY(-100%); opacity:1; visibility:hidden; } }
+  @keyframes loaderWord { 0% { opacity:0; transform:translateY(14px); letter-spacing:6px; } 100% { opacity:1; transform:none; letter-spacing:.3px; } }
+  @keyframes loaderBar { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+  @keyframes catFloat { 0%,100% { transform:translateY(0) rotate(-1deg); } 50% { transform:translateY(-9px) rotate(1deg); } }
+  @keyframes catIn { from { opacity:0; transform:translateY(18px) scale(.92); } to { opacity:1; transform:none; } }
+  @keyframes zSnore { 0% { opacity:0; transform:translate(0,4px) scale(.7); } 30% { opacity:1; } 100% { opacity:0; transform:translate(10px,-22px) scale(1.1); } }
+  @keyframes loaderFade { from { opacity:0; } to { opacity:1; } }
+  @keyframes scrollIn { from { opacity:0; } to { opacity:1; } }
+  @keyframes grainShift {
+    0%{transform:translate(0,0)} 10%{transform:translate(-5%,-5%)} 20%{transform:translate(-10%,5%)}
+    30%{transform:translate(5%,-10%)} 40%{transform:translate(-5%,12%)} 50%{transform:translate(-10%,5%)}
+    60%{transform:translate(12%,0)} 70%{transform:translate(0,8%)} 80%{transform:translate(-12%,0)}
+    90%{transform:translate(8%,-5%)} 100%{transform:translate(0,0)}
+  }
+  @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  .grain { position:fixed; inset:-150%; z-index:60; pointer-events:none; opacity:.06; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); animation:grainShift 7s steps(8) infinite; }
+  .vignette { position:fixed; inset:0; z-index:59; pointer-events:none; background:radial-gradient(120% 90% at 50% 42%, transparent 52%, rgba(12,1,5,.55) 100%); }
+  .marq-wrap { overflow:hidden; white-space:nowrap; }
+  .marq-track { display:inline-flex; will-change:transform; animation:marquee 26s linear infinite; }
+  .marq-track span { font-family:'Abril Fatface',serif; font-size:clamp(48px,8vw,118px); line-height:1; padding:0 .35em; color:transparent; -webkit-text-stroke:1.2px rgba(246,227,184,.45); }
+  .marq-track span.fill { color:#fbeccb; -webkit-text-stroke:0; }
+  .marq-star { -webkit-text-stroke:0 !important; color:#f6e3b8 !important; }
+  #cursor { position:fixed; top:0; left:0; width:54px; height:64px; background:url('uploads/paw-cursor.png') center/contain no-repeat; pointer-events:none; z-index:90; transform:translate(-50%,-50%); filter:drop-shadow(0 4px 6px rgba(0,0,0,.45)); transition:opacity .3s ease; opacity:0; transform-origin:center; }
+  #cursor.hot { }
+  #cursor.grab { width:50px; height:62px; background-image:url('uploads/paw-grab.png'); }
+  #cursor .clabel { font-family:'Hanken Grotesk',sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:#fbeccb; opacity:0; transition:opacity .25s ease; position:absolute; left:50%; bottom:-16px; transform:translateX(-50%); white-space:nowrap; text-shadow:0 1px 3px rgba(0,0,0,.7); }
+  #cursor.drag .clabel { opacity:1; }
+  #cursor-dot { display:none; }
+  @media (hover:hover) and (pointer:fine) { html, body, *, *::before, *::after { cursor:none !important; } }
+  @media (hover:none) { #cursor,#cursor-dot { display:none; } }
+  .hero-anim { opacity:0; animation:heroUp .95s cubic-bezier(.2,.75,.2,1) both; }
+  #loader { animation:loaderOut 3s cubic-bezier(.6,.05,.2,1) forwards; }
+  @media (prefers-reduced-motion:reduce) { #loader { display:none; } .hero-anim { opacity:1; animation:none; } }
+  .navlink { position:relative; }
+  .navlink::after { content:''; position:absolute; left:0; right:0; bottom:-5px; height:1.5px; background:#f6e3b8; transform:scaleX(0); transform-origin:left; transition:transform .32s cubic-bezier(.2,.8,.2,1); }
+  .navlink:hover::after { transform:scaleX(1); }
+  .btn-cta { transition:transform .25s ease, box-shadow .25s ease, background .25s ease; }
+  .btn-cta:hover { transform:translateY(-2px); box-shadow:0 14px 34px -12px rgba(246,227,184,.5); }
+  .btn-ghost { transition:transform .25s ease, border-color .25s ease, color .25s ease, background .25s ease; }
+  .btn-ghost:hover { transform:translateY(-2px); background:rgba(246,227,184,.08); border-color:#f6e3b8; }
+  .reel-mask {
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent),linear-gradient(0deg,transparent,#000 7%,#000 93%,transparent);
+    -webkit-mask-composite:source-in;
+    mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent),linear-gradient(0deg,transparent,#000 7%,#000 93%,transparent);
+    mask-composite:intersect;
+  }
+  .reel-vp { position:relative; overflow:hidden; cursor:grab; touch-action:none; }
+  .reel-vp.drag { cursor:grabbing; }
+  .reel-world { position:absolute; top:0; left:0; user-select:none; will-change:transform; backface-visibility:hidden; }
+  .reel-skew { position:absolute; top:0; left:0; will-change:transform; backface-visibility:hidden; }
+  .reel-cell { position:absolute; top:0; left:0; }
+  .gtile { position:absolute; overflow:visible; transform:rotate(var(--rot,0deg)); transition:box-shadow .35s ease, filter .35s ease, transform .4s cubic-bezier(.2,.8,.2,1); }
+  .reel-vp.drag .gtile { transition:none; }
+  .gtile:hover { transform:rotate(var(--rot,0deg)) translateY(-7px) scale(1.04); z-index:8; filter:brightness(1.05); }
+  .gtile:hover .gphoto { box-shadow:inset 0 0 0 1px rgba(0,0,0,.08), 0 24px 38px -18px rgba(0,0,0,.7); }
+  @media (max-width:900px){ .reel-vp { height:560px !important; } }
+  @media (max-width:560px){ .reel-vp { height:440px !important; } }
+  .qcard { transform:rotate(var(--rot,0deg)); transition:transform .4s cubic-bezier(.2,.8,.2,1), filter .35s ease; }
+  .qcard:hover { transform:rotate(var(--rot,0deg)) translateY(-7px) scale(1.025); filter:drop-shadow(0 26px 34px rgba(0,0,0,.5)) brightness(1.02); z-index:4; }
+  .rev-paper { transition:transform .6s cubic-bezier(.22,1,.36,1), filter .45s ease, opacity .45s ease; }
+  .rev-step { transition:color .2s ease, transform .2s ease; }
+  .rev-step:hover { color:#39220f; transform:scale(1.14); }
+  .swipe-cue { opacity:0; transition:opacity .5s ease; pointer-events:none; }
+  .swipe-cue.show { opacity:1; }
+  .swipe-cue-hand { position:relative; width:132px; height:98px; }
+  .swipe-cue-hand::before { content:''; position:absolute; left:50%; top:62%; transform:translate(-50%,-50%); width:148px; height:96px; background:radial-gradient(50% 50% at 50% 50%, rgba(9,1,4,.5), transparent 72%); filter:blur(6px); }
+  .swipe-hand { position:absolute; left:50%; top:50%; width:58px; height:74px; margin:-37px 0 0 -29px; object-fit:contain; filter:drop-shadow(0 8px 12px rgba(0,0,0,.5)); animation:swipeHandMove 1.95s cubic-bezier(.45,.03,.55,.97) infinite; transform-origin:50% 84%; }
+  .swipe-hand-ghost { opacity:.28; filter:none; animation-delay:-.16s; }
+  .swipe-cue.no-motion .swipe-hand { animation:none; transform:rotate(-3deg); }
+  .swipe-cue.no-motion .swipe-hand-ghost { display:none; }
+  @keyframes swipeHandMove { 0%{ transform:translateX(30px) rotate(12deg); } 50%{ transform:translateX(-30px) rotate(-12deg); } 100%{ transform:translateX(30px) rotate(12deg); } }
+  @media (max-width:560px) {
+    #nav { padding:14px 20px !important; }
+    #nav .navlink { display:none !important; }
+    #nav .nav-links { gap:0 !important; }
+    .hero-pad { padding:0 24px 48px !important; }
+    .sec-pad { padding-left:24px !important; padding-right:24px !important; }
+    .mcol { grid-template-columns:1fr !important; gap:28px !important; }
+    .mcol-rev { grid-template-columns:1fr !important; gap:14px !important; }
+    .about-img { aspect-ratio:4/3 !important; }
+    .rev-stage { height:360px !important; }
+    .rev-paper { width:94% !important; max-width:384px !important; }
+  }
+  /* Map: hover veil keeps the custom paw cursor working over the cross-origin map; click drops it to interact */
+  .map-veil { position:absolute; inset:0; z-index:1; }
+  #map-frame.map-live .map-veil { pointer-events:none; }
+  .map-hint { position:absolute; right:14px; top:13px; display:inline-flex; align-items:center; padding:6px 12px; border-radius:999px; background:rgba(26,3,9,.82); color:#f6e3b8; font-size:11px; font-weight:600; letter-spacing:.4px; white-space:nowrap; opacity:0; transform:translateY(-4px); transition:opacity .3s ease, transform .3s ease; pointer-events:none; box-shadow:0 6px 16px -6px rgba(0,0,0,.6); }
+  #map-frame:hover .map-hint { opacity:1; transform:none; }
+  #map-frame.map-live .map-hint { opacity:0 !important; }
+</style>
+</head>
+<body>
+
+<div id="dc-root" style="width:100%;background:#4a0f1b;color:#f6e3b8;font-family:'Hanken Grotesk',sans-serif;overflow-x:clip;position:relative;">
+
+  <!-- ===================== ATMOSPHERE OVERLAYS ===================== -->
+  <div class="vignette"></div>
+  <div class="grain"></div>
+  <div id="cursor"><span class="clabel">DRAG</span></div>
+  <div id="cursor-dot"></div>
+
+  <!-- ===================== PHOTO LIGHTBOX ===================== -->
+  <div id="pview" style="position:fixed;inset:0;z-index:95;display:none;align-items:center;justify-content:center;padding:5vh 5vw;">
+    <div id="pview-bd" style="position:absolute;inset:0;background:rgba(18,2,7,.82);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;transition:opacity .35s ease;"></div>
+    <div id="pview-card" style="position:relative;background:#ece0c4;padding:16px 16px 54px;box-shadow:0 44px 90px -22px rgba(0,0,0,.85);opacity:0;transform:scale(.85) rotate(-1.5deg);transition:transform .42s cubic-bezier(.2,.85,.2,1),opacity .35s ease;max-width:min(560px,92vw);will-change:transform,opacity;">
+      <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%) rotate(-3deg);width:108px;height:28px;background:repeating-linear-gradient(90deg,rgba(228,208,150,.5) 0 8px,rgba(212,190,132,.46) 8px 16px);box-shadow:0 2px 4px rgba(0,0,0,.22);"></div>
+      <img id="pview-img" alt="" style="display:block;max-height:72vh;max-width:100%;width:auto;object-fit:contain;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);">
+      <div id="pview-cap" style="position:absolute;left:0;right:0;bottom:17px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#7a4a30;"></div>
+    </div>
+  </div>
+
+  <!-- ===================== LOADER ===================== -->
+  <div id="loader" style="position:fixed;inset:0;z-index:100;background:#1c0610 url('uploads/pasted-1782234810783-0.jpg') center/cover;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;">
+    <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 45%, rgba(18,4,9,.55) 0%, rgba(18,4,9,.82) 100%);"></div>
+    <div style="position:relative;animation:catIn .8s cubic-bezier(.2,.75,.2,1) both;">
+      <div style="animation:catFloat 3.4s ease-in-out infinite;">
+        <img src="uploads/pasted-1782167230759-0-sm.png" alt="" style="width:clamp(180px,26vw,240px);height:auto;display:block;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45));">
+      </div>
+      <span style="position:absolute;right:14%;top:-6%;font-family:'Abril Fatface',serif;font-size:22px;color:rgba(246,227,184,.75);animation:zSnore 2.6s ease-in-out infinite;">z</span>
+      <span style="position:absolute;right:9%;top:-2%;font-family:'Abril Fatface',serif;font-size:16px;color:rgba(246,227,184,.6);animation:zSnore 2.6s ease-in-out infinite .8s;">z</span>
+    </div>
+    <div style="position:relative;font-family:'Abril Fatface',serif;font-size:clamp(30px,5vw,46px);color:#fbeccb;animation:loaderWord 1.1s cubic-bezier(.2,.75,.2,1) both;">Barber of Gloom</div>
+    <div style="position:relative;width:160px;height:2px;background:rgba(246,227,184,.16);border-radius:2px;overflow:hidden;animation:loaderFade .5s ease both;">
+      <div style="width:100%;height:100%;background:#f6e3b8;transform-origin:left;animation:loaderBar 2.3s cubic-bezier(.5,0,.2,1) .1s both;"></div>
+    </div>
+    <div style="position:relative;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(246,227,184,.5);animation:loaderFade .8s ease .3s both;">McAllen, Texas</div>
+  </div>
+
+  <!-- ===================== NAV ===================== -->
+  <nav id="nav" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:22px 44px;border-bottom:1px solid transparent;transition:background .4s ease, padding .4s ease, border-color .4s ease;">
+    <a href="#top" style="font-family:'Abril Fatface',serif;font-size:21px;color:#fbeccb;letter-spacing:.3px;">Barber of Gloom</a>
+    <div class="nav-links" style="display:flex;align-items:center;gap:30px;">
+      <a class="navlink" href="#work" style="font-size:13px;letter-spacing:.6px;color:rgba(246,227,184,.85);">Work</a>
+      <a class="navlink" href="#services" style="font-size:13px;letter-spacing:.6px;color:rgba(246,227,184,.85);">Services</a>
+      <a class="navlink" href="#reviews" style="font-size:13px;letter-spacing:.6px;color:rgba(246,227,184,.85);">Reviews</a>
+      <a class="navlink" href="#visit" style="font-size:13px;letter-spacing:.6px;color:rgba(246,227,184,.85);">Visit</a>
+      <a class="btn-cta" href="https://booksy.com/en-us/1705092_barber-of-gloom_barber-shop_121870_palmhurst#ba_s=seo" target="_blank" rel="noopener" style="background:#f6e3b8;color:#2a0710;font-size:12.5px;font-weight:700;letter-spacing:.3px;border-radius:22px;padding:9px 18px;">Book on Booksy ↗</a>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO (pinned — content rises over it) ===================== -->
+  <header id="top" style="position:sticky;top:0;z-index:0;height:100vh;display:flex;align-items:flex-end;overflow:hidden;">
+    <div style="position:absolute;inset:0;overflow:hidden;">
+      <img src="uploads/pasted-1782164031002-0.jpg" alt="Aliyah at Barber of Gloom" style="position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;object-position:58% 38%;animation:slowzoom 26s ease-in-out infinite alternate;">
+      <div style="position:absolute;inset:0;background:linear-gradient(150deg,rgba(42,7,16,.3),rgba(42,7,16,.5));"></div>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(20,2,8,.92) 0%,rgba(20,2,8,.25) 46%,rgba(20,2,8,.55) 100%);"></div>
+    <div class="hero-pad" style="position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:0 44px 72px;">
+      <div class="hero-anim" style="animation-delay:2.1s;font-size:13px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(246,227,184,.72);margin-bottom:20px;">McAllen, Texas · by appointment</div>
+      <h1 class="hero-anim" style="animation-delay:2.25s;font-family:'Abril Fatface',serif;font-size:clamp(64px,9vw,132px);line-height:.92;margin:0;color:#fbeccb;text-shadow:0 14px 40px rgba(20,2,8,.5);">Barber of<br>Gloom</h1>
+      <div class="hero-anim" style="animation-delay:2.42s;display:flex;align-items:center;gap:18px;margin-top:26px;flex-wrap:wrap;">
+        <div style="font-size:17px;color:rgba(246,227,184,.9);">Barber/Hairstylist✨
+</div>
+        <div style="width:5px;height:5px;border-radius:50%;background:rgba(246,227,184,.4);"></div>
+        <div style="font-size:14px;letter-spacing:.5px;color:#f6e3b8;">★★★★★ &nbsp;5.0 · +100 reviews</div>
+      </div>
+      <div class="hero-anim" style="animation-delay:2.56s;display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;">
+        <a class="btn-cta" href="https://booksy.com/en-us/1705092_barber-of-gloom_barber-shop_121870_palmhurst#ba_s=seo" target="_blank" rel="noopener" style="background:#f6e3b8;color:#2a0710;font-size:14px;font-weight:700;letter-spacing:.3px;border-radius:26px;padding:14px 26px;">Book on Booksy ↗</a>
+        <a class="btn-ghost" href="#work" style="border:1.5px solid rgba(246,227,184,.55);color:#f6e3b8;font-size:14px;font-weight:600;letter-spacing:.3px;border-radius:26px;padding:14px 26px;">See the work</a>
+      </div>
+    </div>
+    <div style="opacity:0;animation:scrollIn .9s ease 2.75s both;position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font-size:10px;letter-spacing:3px;color:rgba(246,227,184,.55);">SCROLL ↓</div>
+  </header>
+
+  <!-- ===================== RISING CONTENT PANEL ===================== -->
+  <div style="position:relative;z-index:2;">
+
+  <!-- ===================== WORK / GALLERY ===================== -->
+  <section id="work" style="position:relative;padding:96px 0 100px;background:#4a0f1b;border-radius:26px 26px 0 0;box-shadow:0 -32px 64px -20px rgba(12,1,5,.85);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 44px;">
+      <div class="reveal" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:36px;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#f6e3b8;margin-bottom:12px;">The work</div>
+          <h2 style="font-family:'Abril Fatface',serif;font-size:clamp(34px,4.4vw,56px);line-height:1;margin:0;color:#fbeccb;">A wall of cuts</h2>
+        </div>
+        <div style="font-size:13px;font-style:italic;color:rgba(246,227,184,.55);display:flex;align-items:center;gap:9px;"><span style="font-size:15px;">✛</span> drag to explore </div>
+      </div>
+    </div>
+    <div class="reveal" style="max-width:1500px;margin:0 auto;padding:0 24px;">
+      <div style="position:relative;">
+      <div data-reel data-swipe-zone class="reel-vp" style="height:740px;border-radius:14px;background:#a9794a url('uploads/cork-background.png') center/cover no-repeat;">
+        <div data-swipe-cue="work" class="swipe-cue" aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:30;">
+          <div class="swipe-cue-hand">
+            <img class="swipe-hand swipe-hand-ghost" src="uploads/paw-grab.png" alt="" aria-hidden="true">
+            <img class="swipe-hand" src="uploads/paw-grab.png" alt="" aria-hidden="true">
+          </div>
+        </div>
+        <div class="reel-cell" style="width:2160px;height:766px;">
+          <div class="gtile" style="left:0px;top:64px;width:178px;height:308px;--rot:-2.6deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237785939-0.jpg" alt="mullet" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">mullet</div><div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(5deg);width:88px;height:25px;background:repeating-linear-gradient(90deg,rgba(228,208,150,.5) 0 8px,rgba(212,190,132,.46) 8px 16px);box-shadow:0 2px 4px rgba(0,0,0,.22);"></div></div>
+          <div class="gtile" style="left:216px;top:51px;width:178px;height:308px;--rot:1.8deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237792522-0.jpg" alt="colour" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">colour</div><svg width="20" height="50" viewBox="0 0 20 50" fill="none" style="position:absolute;top:-15px;right:26px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.4));"><path d="M6.5 48 V11 a3.6 3.6 0 0 1 7.2 0 V42 a2.4 2.4 0 0 1-4.8 0 V16" stroke="#dcd7cd" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          <div class="gtile" style="left:432px;top:62px;width:178px;height:308px;--rot:-1.3deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237797752-0.jpg" alt="wolf cut" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">wolf cut</div><div style="position:absolute;top:5px;left:50%;transform:translateX(-50%);width:17px;height:17px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#ff7d7d,#a81d2b 72%);box-shadow:0 4px 6px rgba(0,0,0,.45),inset -1px -1px 2px rgba(0,0,0,.35),inset 1px 1px 2px rgba(255,255,255,.4);"></div></div>
+          <div class="gtile" style="left:648px;top:53px;width:178px;height:308px;--rot:2.4deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237802364-0.jpg" alt="curly shag" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">curly shag</div><div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-4deg);width:88px;height:25px;background:repeating-linear-gradient(90deg,rgba(228,208,150,.5) 0 8px,rgba(212,190,132,.46) 8px 16px);box-shadow:0 2px 4px rgba(0,0,0,.22);"></div></div>
+          <div class="gtile" style="left:864px;top:66px;width:178px;height:308px;--rot:-2deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237807392-0.jpg" alt="vivid colour" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">vivid colour</div><svg width="20" height="50" viewBox="0 0 20 50" fill="none" style="position:absolute;top:-15px;left:26px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.4));"><path d="M6.5 48 V11 a3.6 3.6 0 0 1 7.2 0 V42 a2.4 2.4 0 0 1-4.8 0 V16" stroke="#dcd7cd" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          <div class="gtile" style="left:1080px;top:55px;width:178px;height:308px;--rot:1.2deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237813845-0.jpg" alt="long layers" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">long layers</div><div style="position:absolute;top:5px;left:50%;transform:translateX(-50%);width:17px;height:17px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#ff7d7d,#a81d2b 72%);box-shadow:0 4px 6px rgba(0,0,0,.45),inset -1px -1px 2px rgba(0,0,0,.35),inset 1px 1px 2px rgba(255,255,255,.4);"></div></div>
+          <div class="gtile" style="left:1296px;top:63px;width:178px;height:308px;--rot:-2.8deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237819689-0.jpg" alt="shag" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">shag</div><div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(5deg);width:88px;height:25px;background:repeating-linear-gradient(90deg,rgba(228,208,150,.5) 0 8px,rgba(212,190,132,.46) 8px 16px);box-shadow:0 2px 4px rgba(0,0,0,.22);"></div></div>
+          <div class="gtile" style="left:1512px;top:50px;width:178px;height:308px;--rot:2.1deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237828798-0.jpg" alt="blowout" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">blowout</div><svg width="20" height="50" viewBox="0 0 20 50" fill="none" style="position:absolute;top:-15px;right:26px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.4));"><path d="M6.5 48 V11 a3.6 3.6 0 0 1 7.2 0 V42 a2.4 2.4 0 0 1-4.8 0 V16" stroke="#dcd7cd" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          <div class="gtile" style="left:1728px;top:61px;width:178px;height:308px;--rot:-1.6deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237835750-0.jpg" alt="long curls" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">long curls</div><div style="position:absolute;top:5px;left:50%;transform:translateX(-50%);width:17px;height:17px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#ff7d7d,#a81d2b 72%);box-shadow:0 4px 6px rgba(0,0,0,.45),inset -1px -1px 2px rgba(0,0,0,.35),inset 1px 1px 2px rgba(255,255,255,.4);"></div></div>
+          <div class="gtile" style="left:1944px;top:52px;width:178px;height:308px;--rot:2.7deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237845624-0.jpg" alt="fringe" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">fringe</div><div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-4deg);width:88px;height:25px;background:repeating-linear-gradient(90deg,rgba(228,208,150,.5) 0 8px,rgba(212,190,132,.46) 8px 16px);box-shadow:0 2px 4px rgba(0,0,0,.22);"></div></div>
+          <div class="gtile" style="left:0px;top:409px;width:163px;height:296px;--rot:2.4deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237857522-0.jpg" alt="mullet" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">mullet</div><svg width="20" height="50" viewBox="0 0 20 50" fill="none" style="position:absolute;top:-15px;left:26px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.4));"><path d="M6.5 48 V11 a3.6 3.6 0 0 1 7.2 0 V42 a2.4 2.4 0 0 1-4.8 0 V16" stroke="#dcd7cd" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          <div class="gtile" style="left:201px;top:417px;width:171px;height:296px;--rot:-2deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237862608-0.jpg" alt="curtain bangs" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">curtain bangs</div><div style="position:absolute;top:5px;left:50%;transform:translateX(-50%);width:17px;height:17px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#ff7d7d,#a81d2b 72%);box-shadow:0 4px 6px rgba(0,0,0,.45),inset -1px -1px 2px rgba(0,0,0,.35),inset 1px 1px 2px rgba(255,255,255,.4);"></div></div>
+          <div class="gtile" style="left:410px;top:404px;width:224px;height:296px;--rot:1.2deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237867472-0.jpg" alt="split dye" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">split dye</div><div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(5deg);width:88px;height:25px;background:repeating-linear-gradient(90deg,rgba(228,208,150,.5) 0 8px,rgba(212,190,132,.46) 8px 16px);box-shadow:0 2px 4px rgba(0,0,0,.22);"></div></div>
+          <div class="gtile" style="left:671px;top:415px;width:211px;height:296px;--rot:-2.8deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782237875227-0.jpg" alt="perm" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">perm</div><svg width="20" height="50" viewBox="0 0 20 50" fill="none" style="position:absolute;top:-15px;right:26px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.4));"><path d="M6.5 48 V11 a3.6 3.6 0 0 1 7.2 0 V42 a2.4 2.4 0 0 1-4.8 0 V16" stroke="#dcd7cd" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          <div class="gtile" style="left:920px;top:406px;width:171px;height:296px;--rot:2.1deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782238133360-0.jpg" alt="taper fade" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">taper fade</div><div style="position:absolute;top:5px;left:50%;transform:translateX(-50%);width:17px;height:17px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#ff7d7d,#a81d2b 72%);box-shadow:0 4px 6px rgba(0,0,0,.45),inset -1px -1px 2px rgba(0,0,0,.35),inset 1px 1px 2px rgba(255,255,255,.4);"></div></div>
+          <div class="gtile" style="left:1129px;top:418px;width:171px;height:296px;--rot:-1.6deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782238148734-0.jpg" alt="mullet" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">mullet</div><div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-4deg);width:88px;height:25px;background:repeating-linear-gradient(90deg,rgba(228,208,150,.5) 0 8px,rgba(212,190,132,.46) 8px 16px);box-shadow:0 2px 4px rgba(0,0,0,.22);"></div></div>
+          <div class="gtile" style="left:1338px;top:405px;width:171px;height:296px;--rot:2.7deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782238155603-0.jpg" alt="textured crop" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">textured crop</div><svg width="20" height="50" viewBox="0 0 20 50" fill="none" style="position:absolute;top:-15px;left:26px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.4));"><path d="M6.5 48 V11 a3.6 3.6 0 0 1 7.2 0 V42 a2.4 2.4 0 0 1-4.8 0 V16" stroke="#dcd7cd" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          <div class="gtile" style="left:1547px;top:416px;width:171px;height:296px;--rot:-2.6deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782238173427-0.jpg" alt="mullet" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">mullet</div><div style="position:absolute;top:5px;left:50%;transform:translateX(-50%);width:17px;height:17px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#ff7d7d,#a81d2b 72%);box-shadow:0 4px 6px rgba(0,0,0,.45),inset -1px -1px 2px rgba(0,0,0,.35),inset 1px 1px 2px rgba(255,255,255,.4);"></div></div>
+          <div class="gtile" style="left:1756px;top:407px;width:164px;height:296px;--rot:1.8deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/Screenshot%202026-06-23%20at%201.12.46%20PM.jpg" alt="split dye" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">split dye</div><div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(5deg);width:88px;height:25px;background:repeating-linear-gradient(90deg,rgba(228,208,150,.5) 0 8px,rgba(212,190,132,.46) 8px 16px);box-shadow:0 2px 4px rgba(0,0,0,.22);"></div></div>
+          <div class="gtile" style="left:1958px;top:420px;width:164px;height:296px;--rot:-1.3deg;background:#ece0c4;padding:9px 9px 30px;box-shadow:0 16px 28px -12px rgba(0,0,0,.6);"><div class="gphoto" style="position:absolute;left:9px;top:9px;right:9px;bottom:30px;overflow:hidden;background:#23121a;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:box-shadow .35s ease;"><img src="uploads/pasted-1782238511686-0.jpg" alt="rainbow colour" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div><div style="position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">rainbow colour</div><svg width="20" height="50" viewBox="0 0 20 50" fill="none" style="position:absolute;top:-15px;right:26px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.4));"><path d="M6.5 48 V11 a3.6 3.6 0 0 1 7.2 0 V42 a2.4 2.4 0 0 1-4.8 0 V16" stroke="#dcd7cd" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          
+        </div>
+      </div>
+      <div aria-hidden="true" style="position:absolute;inset:-14px;pointer-events:none;z-index:5;border-style:solid;border-width:30px;border-image:url('uploads/wooden-frame.png') 32 fill stretch;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45));"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services" style="position:relative;padding:96px 0;background:#4a0f1b;border-top:1px solid rgba(246,227,184,.1);border-bottom:1px solid rgba(246,227,184,.1);">
+    <div class="mcol" style="max-width:1080px;margin:0 auto;padding:0 44px;display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:center;">
+      <div class="reveal">
+        <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#f6e3b8;margin-bottom:12px;">Services</div>
+        <h2 style="font-family:'Abril Fatface',serif;font-size:clamp(34px,4vw,52px);line-height:1.02;margin:0 0 18px;color:#fbeccb;">Two cuts,<br>one chair.</h2>
+        <p style="font-size:14px;line-height:1.7;color:rgba(246,227,184,.65);margin:0 0 26px;max-width:300px;">Every appointment is an hour, one-on-one. Custom design work is booked after a quick chat.</p>
+        <a href="https://booksy.com/en-us/1705092_barber-of-gloom_barber-shop_121870_palmhurst#ba_s=seo" target="_blank" rel="noopener" class="svc-cta" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;background:#f6e3b8;color:#3a0a13;font-size:14px;font-weight:700;letter-spacing:.3px;box-shadow:0 10px 24px -10px rgba(0,0,0,.6);transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease;">Book a chair <span style="font-size:16px;line-height:1;">→</span></a>
+        <div style="margin-top:18px;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:rgba(246,227,184,.45);">McAllen, TX</div>
+        <img src="uploads/throne-cat.png" alt="The shop cat on his throne" style="display:block;width:230px;max-width:62%;height:auto;margin-top:30px;transform:rotate(-4deg);filter:drop-shadow(0 16px 24px rgba(0,0,0,.45));pointer-events:none;">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="svc-card" style="position:relative;display:flex;align-items:stretch;">
+          <div style="flex:1;padding:22px 26px;">
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(246,227,184,.5);margin-bottom:8px;">Haircut · 1 hr</div>
+            <div style="font-family:'Abril Fatface',serif;font-size:30px;color:#fbeccb;">Long Hair</div>
+          </div>
+          <div class="svc-perf">
+            <div style="font-family:'Abril Fatface',serif;font-size:48px;line-height:1;color:#f6e3b8;">$50</div>
+          </div>
+          
+          
+        </div>
+        <div class="svc-card" style="position:relative;display:flex;align-items:stretch;">
+          <div style="flex:1;padding:22px 26px;">
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(246,227,184,.5);margin-bottom:8px;">Haircut · 1 hr</div>
+            <div style="font-family:'Abril Fatface',serif;font-size:30px;color:#fbeccb;">Short Hair</div>
+          </div>
+          <div class="svc-perf">
+            <div style="font-family:'Abril Fatface',serif;font-size:48px;line-height:1;color:#f6e3b8;">$40</div>
+          </div>
+          
+          
+        </div>
+        <div class="svc-card" style="position:relative;display:flex;align-items:stretch;margin-top:4px;">
+          <div style="flex:1;padding:22px 26px;">
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#f6e3b8;margin-bottom:8px;">Appointment only</div>
+            <div style="font-family:'Abril Fatface',serif;font-size:30px;color:#fbeccb;">Custom Designs</div>
+          </div>
+          <a href="https://booksy.com/en-us/1705092_barber-of-gloom_barber-shop_121870_palmhurst#ba_s=seo" target="_blank" rel="noopener" class="svc-perf" style="padding:0 10px;">
+            <div style="font-family:'Abril Fatface',serif;font-size:27px;line-height:1.05;text-align:center;color:#f6e3b8;">By<br>quote</div>
+          </a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REVIEWS ===================== -->
+  <section id="reviews" data-screen-label="Reviews" style="position:relative;padding:104px 0 92px;background:#4a0f1b;overflow:hidden;">
+    <!-- warm counter light -->
+    <div aria-hidden="true" style="position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);width:min(1080px,94%);height:540px;background:radial-gradient(56% 50% at 50% 42%,rgba(246,227,184,.10),transparent 72%);pointer-events:none;z-index:0;"></div>
+
+    <!-- simplified header -->
+    <div class="reveal" style="position:relative;z-index:2;max-width:660px;margin:0 auto;padding:0 24px;text-align:center;">
+      <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#f6e3b8;margin-bottom:12px;">Reviews</div>
+      <h2 style="font-family:'Abril Fatface',serif;font-size:clamp(36px,4.6vw,58px);line-height:1;margin:0;color:#fbeccb;">5.0, no rounding.</h2>
+      <div style="display:flex;align-items:center;justify-content:center;gap:11px;margin-top:15px;">
+        <span style="font-size:15px;letter-spacing:2px;color:#f6e3b8;">★★★★★</span>
+        <span style="font-size:13px;color:rgba(246,227,184,.6);">111 five-star cuts, every one earned</span>
+      </div>
+      <div style="margin-top:10px;font-size:12.5px;font-style:italic;color:rgba(246,227,184,.42);">Tap a slip — or flick the top one aside.</div>
+    </div>
+
+    <!-- spilled stage -->
+    <div class="reveal rev-stage" data-revwrap data-swipe-zone style="position:relative;z-index:1;max-width:1180px;height:460px;margin:6px auto 0;padding:0 24px;touch-action:pan-y;">
+      <div aria-hidden="true" style="position:absolute;left:50%;bottom:54px;transform:translateX(-50%);width:min(540px,70%);height:48px;background:radial-gradient(50% 50% at 50% 50%,rgba(8,1,3,.5),transparent 72%);filter:blur(7px);pointer-events:none;z-index:0;"></div>
+      <div data-swipe-cue="reviews" class="swipe-cue" aria-hidden="true" style="position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;">
+        <div class="swipe-cue-hand">
+          <img class="swipe-hand swipe-hand-ghost" src="uploads/paw-grab.png" alt="" aria-hidden="true">
+          <img class="swipe-hand" src="uploads/paw-grab.png" alt="" aria-hidden="true">
+        </div>
+      </div>
+        <div class="rev-paper" data-idx="0" data-rot="-4" data-ox="-20" data-oy="12" style="position:absolute;left:50%;top:50%;width:min(90%,548px);aspect-ratio:2.42 / 1;container-type:size;transform:translate(-50%,-50%);will-change:transform,filter;">
+          <img data-psrc="uploads/rev-paper-1.png" alt="" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;-webkit-user-drag:none;">
+          <div class="rev-body" style="position:absolute;inset:0;box-sizing:border-box;padding:5.4cqw 11.5cqw;display:flex;flex-direction:column;justify-content:center;pointer-events:none;">
+            <div class="rev-stars" style="font-size:2.9cqw;letter-spacing:.65cqw;color:#bd8438;margin-bottom:1.9cqw;">★★★★★</div>
+            <div class="rev-quote" style="font-size:4.3cqw;line-height:1.27;color:#39220f;font-family:'Abril Fatface',serif;text-wrap:balance;">"Literally the best haircut I've had."</div>
+            <div class="rev-name" style="margin-top:2.2cqw;font-size:2.5cqw;letter-spacing:.1cqw;color:#7c5733;">Joleen · Long Hair</div>
+          </div>
+        </div>
+        <div class="rev-paper" data-idx="1" data-rot="3.5" data-ox="24" data-oy="-10" style="position:absolute;left:50%;top:50%;width:min(90%,548px);aspect-ratio:2.42 / 1;container-type:size;transform:translate(-50%,-50%);will-change:transform,filter;">
+          <img data-psrc="uploads/rev-paper-2.png" alt="" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;-webkit-user-drag:none;">
+          <div class="rev-body" style="position:absolute;inset:0;box-sizing:border-box;padding:5.4cqw 11.5cqw;display:flex;flex-direction:column;justify-content:center;pointer-events:none;">
+            <div class="rev-stars" style="font-size:2.9cqw;letter-spacing:.65cqw;color:#bd8438;margin-bottom:1.9cqw;">★★★★★</div>
+            <div class="rev-quote" style="font-size:4.3cqw;line-height:1.27;color:#39220f;font-family:'Abril Fatface',serif;text-wrap:balance;">"First time I've left a salon happy with my hair."</div>
+            <div class="rev-name" style="margin-top:2.2cqw;font-size:2.5cqw;letter-spacing:.1cqw;color:#7c5733;">ale · Long Hair</div>
+          </div>
+        </div>
+        <div class="rev-paper" data-idx="2" data-rot="-2.5" data-ox="16" data-oy="18" style="position:absolute;left:50%;top:50%;width:min(90%,548px);aspect-ratio:2.42 / 1;container-type:size;transform:translate(-50%,-50%);will-change:transform,filter;">
+          <img data-psrc="uploads/rev-paper-3.png" alt="" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;-webkit-user-drag:none;">
+          <div class="rev-body" style="position:absolute;inset:0;box-sizing:border-box;padding:5.4cqw 11.5cqw;display:flex;flex-direction:column;justify-content:center;pointer-events:none;">
+            <div class="rev-stars" style="font-size:2.9cqw;letter-spacing:.65cqw;color:#bd8438;margin-bottom:1.9cqw;">★★★★★</div>
+            <div class="rev-quote" style="font-size:4.3cqw;line-height:1.27;color:#39220f;font-family:'Abril Fatface',serif;text-wrap:balance;">"Barber understood the assignment."</div>
+            <div class="rev-name" style="margin-top:2.2cqw;font-size:2.5cqw;letter-spacing:.1cqw;color:#7c5733;">John · Short Hair</div>
+          </div>
+        </div>
+        <div class="rev-paper" data-idx="3" data-rot="4.5" data-ox="-26" data-oy="-7" style="position:absolute;left:50%;top:50%;width:min(90%,548px);aspect-ratio:2.42 / 1;container-type:size;transform:translate(-50%,-50%);will-change:transform,filter;">
+          <img data-psrc="uploads/rev-paper-4.png" alt="" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;-webkit-user-drag:none;">
+          <div class="rev-body" style="position:absolute;inset:0;box-sizing:border-box;padding:5.4cqw 11.5cqw;display:flex;flex-direction:column;justify-content:center;pointer-events:none;">
+            <div class="rev-stars" style="font-size:2.9cqw;letter-spacing:.65cqw;color:#bd8438;margin-bottom:1.9cqw;">★★★★★</div>
+            <div class="rev-quote" style="font-size:4.3cqw;line-height:1.27;color:#39220f;font-family:'Abril Fatface',serif;text-wrap:balance;">"Phenomenal job every single time. Aliyah, you rock."</div>
+            <div class="rev-name" style="margin-top:2.2cqw;font-size:2.5cqw;letter-spacing:.1cqw;color:#7c5733;">Roderick · Short Hair</div>
+          </div>
+        </div>
+        <div class="rev-paper" data-idx="4" data-rot="-3.5" data-ox="11" data-oy="-20" style="position:absolute;left:50%;top:50%;width:min(90%,548px);aspect-ratio:2.42 / 1;container-type:size;transform:translate(-50%,-50%);will-change:transform,filter;">
+          <img data-psrc="uploads/rev-paper-5.png" alt="" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;-webkit-user-drag:none;">
+          <div class="rev-body" style="position:absolute;inset:0;box-sizing:border-box;padding:5.4cqw 11.5cqw;display:flex;flex-direction:column;justify-content:center;pointer-events:none;">
+            <div class="rev-stars" style="font-size:2.9cqw;letter-spacing:.65cqw;color:#bd8438;margin-bottom:1.9cqw;">★★★★★</div>
+            <div class="rev-quote" style="font-size:4.3cqw;line-height:1.27;color:#39220f;font-family:'Abril Fatface',serif;text-wrap:balance;">"So friendly, and gave me exactly what I asked for."</div>
+            <div class="rev-name" style="margin-top:2.2cqw;font-size:2.5cqw;letter-spacing:.1cqw;color:#7c5733;">Sabrina · Short Hair</div>
+          </div>
+        </div>
+        <div class="rev-paper" data-idx="5" data-rot="3" data-ox="-15" data-oy="15" style="position:absolute;left:50%;top:50%;width:min(90%,548px);aspect-ratio:2.42 / 1;container-type:size;transform:translate(-50%,-50%);will-change:transform,filter;">
+          <img data-psrc="uploads/rev-paper-6.png" alt="" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;-webkit-user-drag:none;">
+          <div class="rev-body" style="position:absolute;inset:0;box-sizing:border-box;padding:5.4cqw 11.5cqw;display:flex;flex-direction:column;justify-content:center;pointer-events:none;">
+            <div class="rev-stars" style="font-size:2.9cqw;letter-spacing:.65cqw;color:#bd8438;margin-bottom:1.9cqw;">★★★★★</div>
+            <div class="rev-quote" style="font-size:4.3cqw;line-height:1.27;color:#39220f;font-family:'Abril Fatface',serif;text-wrap:balance;">"Amazing cut — she is so talented."</div>
+            <div class="rev-name" style="margin-top:2.2cqw;font-size:2.5cqw;letter-spacing:.1cqw;color:#7c5733;">Stella · Long Hair</div>
+          </div>
+        </div>
+    </div>
+
+    <!-- stamped ticket controls -->
+    <div class="reveal" style="position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;gap:20px;margin-top:4px;">
+      <div style="position:relative;display:inline-flex;align-items:center;gap:6px;background:#ece0c4;color:#5c3d22;padding:8px 10px;transform:rotate(-1.3deg);box-shadow:0 16px 30px -14px rgba(0,0,0,.65),inset 0 0 0 1px rgba(0,0,0,.05);">
+        <span aria-hidden="true" style="position:absolute;top:-9px;left:50%;transform:translateX(-50%) rotate(2.4deg);width:64px;height:18px;background:repeating-linear-gradient(90deg,rgba(228,208,150,.55) 0 7px,rgba(212,190,132,.5) 7px 14px);box-shadow:0 2px 4px rgba(0,0,0,.22);"></span>
+        <button class="rev-step" id="rev-prev" aria-label="Previous review" style="all:unset;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;width:46px;height:42px;font-size:21px;color:#9c7748;">←</button>
+        <span aria-hidden="true" style="width:1px;height:22px;background:rgba(92,61,34,.22);"></span>
+        <button class="rev-step" id="rev-next" aria-label="Next review" style="all:unset;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;width:46px;height:42px;font-size:21px;color:#9c7748;">→</button>
+      </div>
+      <a class="navlink" href="https://booksy.com/en-us/1705092_barber-of-gloom_barber-shop_121870_palmhurst#ba_s=seo" target="_blank" rel="noopener" style="font-size:12.5px;letter-spacing:.4px;color:rgba(246,227,184,.7);">Read all 111 on Booksy ↗</a>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" style="position:relative;padding:96px 0;background:#2a0710 url('uploads/pasted-1782234810783-0.jpg') center/cover no-repeat;border-top:1px solid rgba(246,227,184,.1);">
+    <div class="mcol" style="position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 44px;display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;">
+      <div class="reveal" style="position:relative;">
+        <div class="about-img" style="position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;border:1px solid rgba(246,227,184,.16);">
+          <img src="uploads/pasted-1782164172510-0.png" alt="Aliyah" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,7,16,.12) 0%,transparent 35%,rgba(42,7,16,.32) 100%);"></div>
+        </div>
+        <img src="uploads/sleeping-cat.png" alt="" style="position:absolute;right:-4%;top:0;width:32%;height:auto;transform:translateY(-58%);filter:drop-shadow(0 10px 16px rgba(0,0,0,.4));pointer-events:none;z-index:2;">
+      </div>
+      <div class="reveal">
+        <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#f6e3b8;margin-bottom:14px;">The barber</div>
+        <h2 style="font-family:'Abril Fatface',serif;font-size:clamp(38px,5vw,64px);line-height:1;margin:0 0 22px;color:#fbeccb;">Aliyah.</h2>
+        <p style="font-size:16px;line-height:1.7;color:rgba(246,227,184,.75);margin:0 0 28px;max-width:440px;">One chair, one client at a time. Bring a reference or just an idea — we'll build the cut together, no rush.</p>
+        <a class="navlink" href="https://www.instagram.com/barberofgloom/" target="_blank" rel="noopener" style="font-size:14px;letter-spacing:.5px;color:#f6e3b8;">@barberofgloom on Instagram ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VISIT ===================== -->
+  <section id="visit" style="position:relative;padding:96px 0;background:#4a0f1b;border-top:1px solid rgba(246,227,184,.1);">
+    <div class="mcol" style="max-width:1120px;margin:0 auto;padding:0 44px;display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center;">
+      <div class="reveal">
+        <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#f6e3b8;margin-bottom:14px;">Visit</div>
+        <h2 style="font-family:'Abril Fatface',serif;font-size:clamp(34px,4.2vw,52px);line-height:1.05;margin:0 0 22px;color:#fbeccb;">Find the<br>little white shop.</h2>
+        <a href="https://www.google.com/maps/search/?api=1&query=Barber+of+Gloom+822+Laurel+Ave+McAllen+TX+78501" target="_blank" rel="noopener" style="display:inline-block;font-size:16px;line-height:1.6;color:#fbeccb;margin-bottom:6px;text-decoration:none;border-bottom:1px solid rgba(246,227,184,.35);">822 Laurel Ave, McAllen, TX 78501</a>
+        <div style="font-size:13.5px;line-height:1.6;color:rgba(246,227,184,.6);margin-bottom:24px;font-style:italic;">Little white shop in the back with a black roof.</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:30px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#f6e3b8;box-shadow:0 0 0 4px rgba(246,227,184,.16);"></span>
+          <span style="font-size:13px;color:rgba(246,227,184,.75);">By appointment only · book online</span>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a class="btn-cta" href="https://booksy.com/en-us/1705092_barber-of-gloom_barber-shop_121870_palmhurst#ba_s=seo" target="_blank" rel="noopener" style="background:#f6e3b8;color:#2a0710;font-size:14px;font-weight:700;border-radius:26px;padding:14px 26px;">Book on Booksy ↗</a>
+          <a class="btn-ghost" href="https://www.instagram.com/barberofgloom/" target="_blank" rel="noopener" style="border:1.5px solid rgba(246,227,184,.5);color:#f6e3b8;font-size:14px;font-weight:600;border-radius:26px;padding:14px 26px;">Instagram</a>
+        </div>
+        <img src="uploads/pasted-1782279843234-0.png" alt="" style="display:block;width:200px;max-width:55%;height:auto;margin-top:34px;transform:rotate(3deg);filter:drop-shadow(0 14px 22px rgba(0,0,0,.45));pointer-events:none;">
+      </div>
+      <div id="map-frame" class="reveal" style="position:relative;aspect-ratio:16/11;border-radius:16px;overflow:hidden;border:1px solid rgba(246,227,184,.16);background:#1c0610;">
+        <iframe
+          title="Map to Barber of Gloom — 822 Laurel Ave, McAllen, TX 78501"
+          src="https://www.google.com/maps?q=822+Laurel+Ave,+McAllen,+TX+78501&z=16&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+          style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
+        <div class="map-veil" aria-hidden="true"><span class="map-hint">Click to explore the map</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer style="background:#4a0f1b;border-top:1px solid rgba(246,227,184,.12);padding:54px 44px 40px;">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+      <div>
+        <div style="font-family:'Abril Fatface',serif;font-size:26px;color:#fbeccb;margin-bottom:8px;">Barber of Gloom</div>
+        <img src="uploads/sleeping-cat-2.png" alt="" style="display:block;width:240px;max-width:80%;height:auto;margin-top:20px;filter:drop-shadow(0 12px 18px rgba(0,0,0,.45));pointer-events:none;">
+      </div>
+      <div style="display:flex;gap:26px;align-items:center;">
+        <a class="navlink" href="https://www.instagram.com/barberofgloom/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;color:rgba(246,227,184,.85);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram ↗</a>
+        <a class="navlink" href="https://booksy.com/en-us/1705092_barber-of-gloom_barber-shop_121870_palmhurst#ba_s=seo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;color:rgba(246,227,184,.85);"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:5px;background:#001b38;color:#fff;font-family:'Abril Fatface',serif;font-size:11px;line-height:1;">b</span>Booksy ↗</a>
+      </div>
+    </div>
+    <div style="max-width:1200px;margin:34px auto 0;padding-top:20px;border-top:1px solid rgba(246,227,184,.1);font-size:11px;color:rgba(246,227,184,.4);">© 2026 Barber of Gloom · Booking handled through Booksy</div>
+  </footer>
+
+  </div>
+
+</div>
+<script>
+class DCBase {
+  setState(updater) {
+    const patch = typeof updater === 'function' ? updater(this.state) : updater;
+    this.state = Object.assign({}, this.state, patch);
+    if (typeof this.componentDidUpdate === 'function') this.componentDidUpdate();
+  }
+}
+class Component extends DCBase {
+  state = { top: 0 };
+
+
+  componentDidMount() { this.initSmoothScroll(); this.initReveals(); this.wireReels(); this.initNav(); this.initCursor(); this.initPhotoView(); this.layoutReviews(); this.wireReviewDrag(); this.initSwipeCues(); this._onResize = () => this.layoutReviews(); window.addEventListener('resize', this._onResize, { passive: true }); }
+
+  componentDidUpdate() { this.layoutReviews(); }
+
+  layoutReviews() {
+    if (!this.root) { requestAnimationFrame(() => this.layoutReviews()); return; }
+    const cards = Array.from(this.root.querySelectorAll('.rev-paper'));
+    const n = cards.length;
+    if (!n) return;
+    const top = ((this.state.top % n) + n) % n;
+    const w = window.innerWidth;
+    const sx = w <= 640 ? 0.46 : (w <= 980 ? 0.74 : 1);
+    const sy = w <= 640 ? 0.62 : 0.92;
+    // curated "spill" slots by depth — receipts tossed on the counter
+    const FAN = [
+      { x: 172, y: 58, r: 8 },
+      { x: -158, y: 40, r: -10 },
+      { x: 252, y: -32, r: 13 },
+      { x: -250, y: -18, r: -12 },
+      { x: 40, y: 92, r: 4 },
+      { x: -54, y: -74, r: -7 },
+      { x: 312, y: 66, r: 16 },
+      { x: -312, y: -60, r: -15 },
+    ];
+    cards.forEach((el) => {
+      const img = el.querySelector('img[data-psrc]');
+      if (img && !img.src && img.dataset.psrc) img.src = img.dataset.psrc;
+      const i = +el.dataset.idx;
+      const pos = (i - top + n) % n;        // 0 = front (lifted, readable)
+      if (pos === 0) {
+        const rot = (+el.dataset.rot) * 0.5;
+        el.style.zIndex = String(n + 3);
+        el.style.transform = 'translate(-50%, calc(-50% - 12px)) rotate(' + rot.toFixed(2) + 'deg) scale(1)';
+        el.style.filter = 'drop-shadow(0 26px 42px rgba(0,0,0,.55)) brightness(1)';
+        el.style.opacity = '1';
+        el.style.pointerEvents = 'auto';
+        el.classList.add('is-front');
+      } else {
+        const slot = FAN[(pos - 1) % FAN.length];
+        const d = Math.min(pos, 5);
+        const sc = 1 - d * 0.045;
+        el.style.zIndex = String(n - pos + 1);
+        el.style.transform = 'translate(calc(-50% + ' + (slot.x * sx).toFixed(1) + 'px), calc(-50% + ' + (slot.y * sy).toFixed(1) + 'px)) rotate(' + slot.r + 'deg) scale(' + sc.toFixed(3) + ')';
+        el.style.filter = 'drop-shadow(0 ' + (12 + pos * 3) + 'px 26px rgba(0,0,0,.42)) brightness(' + (1 - d * 0.07).toFixed(3) + ')';
+        el.style.opacity = pos > 6 ? '0' : '1';
+        el.style.pointerEvents = 'auto';
+        el.classList.remove('is-front');
+      }
+    });
+  }
+
+  wireReviewDrag() {
+    if (!this.root) { requestAnimationFrame(() => this.wireReviewDrag()); return; }
+    const stage = this.root.querySelector('[data-revwrap]');
+    if (!stage || stage._revWired) return;
+    stage._revWired = true;
+    let active = null, sx = 0, sy = 0, dragging = false, front = false, baseRot = 0;
+    const down = (e) => {
+      const card = e.target.closest && e.target.closest('.rev-paper');
+      if (!card) return;
+      this._engage();
+      active = card; front = card.classList.contains('is-front');
+      sx = e.clientX; sy = e.clientY; dragging = false;
+      baseRot = (+card.dataset.rot) * 0.5;
+      if (front) { card.style.transition = 'none'; try { stage.setPointerCapture(e.pointerId); } catch (_) {} }
+    };
+    const move = (e) => {
+      if (!active) return;
+      const dx = e.clientX - sx, dy = e.clientY - sy;
+      if (!dragging && (Math.abs(dx) > 5 || Math.abs(dy) > 8)) dragging = true;
+      if (front && dragging) {
+        active.style.transform = 'translate(calc(-50% + ' + dx.toFixed(1) + 'px), calc(-50% - 12px + ' + (dy * 0.16).toFixed(1) + 'px)) rotate(' + (baseRot + dx * 0.03).toFixed(2) + 'deg) scale(1.015)';
+      }
+    };
+    const up = (e) => {
+      if (!active) return;
+      const dx = e.clientX - sx;
+      const card = active, wasFront = front, wasDrag = dragging;
+      active = null; dragging = false; front = false;
+      card.style.transition = '';
+      try { stage.releasePointerCapture(e.pointerId); } catch (_) {}
+      if (wasFront && Math.abs(dx) > 64) {
+        this.setState((s) => ({ top: s.top + (dx < 0 ? 1 : -1) }));
+      } else if (!wasDrag) {
+        if (wasFront) this.setState((s) => ({ top: s.top + 1 }));
+        else this.setState({ top: +card.dataset.idx });
+      } else {
+        this.layoutReviews();
+      }
+    };
+    stage.addEventListener('pointerdown', down, { passive: true });
+    stage.addEventListener('pointermove', move, { passive: true });
+    stage.addEventListener('pointerup', up, { passive: true });
+    stage.addEventListener('pointercancel', () => { if (active) { active.style.transition = ''; active = null; dragging = false; front = false; this.layoutReviews(); } }, { passive: true });
+  }
+
+  _engage() {
+    if (this._userEngaged) return;
+    this._userEngaged = true;
+    if (this._hideRevCue) this._hideRevCue();
+  }
+
+  initSwipeCues() {
+    if (!this.root) { requestAnimationFrame(() => this.initSwipeCues()); return; }
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.root.querySelectorAll('[data-swipe-cue]').forEach((cue) => {
+      if (cue._wired) return;
+      cue._wired = true;
+      if (reduce) cue.classList.add('no-motion');
+      const zone = cue.closest('[data-swipe-zone]') || cue.parentElement;
+      let shown = false, hidden = false, hideTimer = null;
+      const hide = () => {
+        if (hidden) return;
+        hidden = true;
+        if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+        cue.classList.remove('show');
+        setTimeout(() => { cue.style.display = 'none'; }, 600);
+      };
+      const show = () => {
+        if (shown || hidden) return;
+        shown = true;
+        cue.classList.add('show');
+        hideTimer = setTimeout(hide, 9000);
+      };
+      if (cue.dataset.swipeCue === 'reviews') this._hideRevCue = hide;
+      if (zone) zone.addEventListener('pointerdown', hide, { once: true, passive: true });
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((ents) => {
+          ents.forEach((e) => { if (e.isIntersecting) { show(); io.disconnect(); } });
+        }, { threshold: 0.4 });
+        io.observe(zone || cue);
+      } else { show(); }
+    });
+  }
+
+  initSmoothScroll() {
+    const start = () => {
+      if (!window.Lenis) { setTimeout(start, 60); return; }
+      if (this._lenis) return;
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) return;
+      const lenis = new window.Lenis({
+        duration: 1.15,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        wheelMultiplier: 0.9,
+        touchMultiplier: 1.4,
+        lerp: 0.085,
+      });
+      this._lenis = lenis;
+      const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+      if (this.root) {
+        this.root.querySelectorAll('a[href^="#"]').forEach((a) => {
+          a.addEventListener('click', (e) => {
+            const id = a.getAttribute('href');
+            if (!id || id === '#') return;
+            const target = this.root.querySelector(id);
+            if (!target) return;
+            e.preventDefault();
+            lenis.scrollTo(target, { offset: -78, duration: 1.25 });
+          });
+        });
+      }
+    };
+    start();
+  }
+
+  initPhotoView() {
+    if (!this.root) { requestAnimationFrame(() => this.initPhotoView()); return; }
+    const pv = this.root.querySelector('#pview');
+    if (!pv) return;
+    const bd = pv.querySelector('#pview-bd');
+    const card = pv.querySelector('#pview-card');
+    const img = pv.querySelector('#pview-img');
+    const cap = pv.querySelector('#pview-cap');
+    let open = false;
+    const show = (src, label) => {
+      img.setAttribute('src', src);
+      cap.textContent = label || '';
+      pv.style.display = 'flex';
+      open = true;
+      requestAnimationFrame(() => {
+        bd.style.opacity = '1';
+        card.style.opacity = '1';
+        card.style.transform = 'scale(1) rotate(0deg)';
+      });
+    };
+    const hide = () => {
+      if (!open) return;
+      open = false;
+      bd.style.opacity = '0';
+      card.style.opacity = '0';
+      card.style.transform = 'scale(.88) rotate(-1.5deg)';
+      setTimeout(() => { if (!open) pv.style.display = 'none'; }, 400);
+    };
+    bd.addEventListener('click', hide);
+    card.addEventListener('click', hide);
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') hide(); });
+    this._openPhoto = show;
+  }
+
+  initCursor() {
+    if (!this.root) { requestAnimationFrame(() => this.initCursor()); return; }
+    if (!window.matchMedia || !window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    const ring = this.root.querySelector('#cursor');
+    const dot = this.root.querySelector('#cursor-dot');
+    if (!ring || !dot) return;
+    let rx = window.innerWidth / 2, ry = window.innerHeight / 2, dx = rx, dy = ry, shown = false;
+    const onMove = (e) => {
+      dx = e.clientX; dy = e.clientY;
+      dot.style.transform = 'translate(' + dx + 'px,' + dy + 'px) translate(-50%,-50%)';
+      if (!shown) { shown = true; ring.style.opacity = '1'; dot.style.opacity = '1'; }
+      const onReel = !!(e.target.closest && e.target.closest('[data-reel]'));
+      const hot = !!(e.target.closest && e.target.closest('a,button')) && !onReel;
+      ring.classList.toggle('drag', onReel);
+      ring.classList.toggle('hot', hot);
+    };
+    window.addEventListener('pointermove', onMove, { passive: true });
+    window.addEventListener('pointerdown', () => { ring.classList.add('hot'); ring.classList.add('grab'); });
+    window.addEventListener('pointerup', () => { ring.classList.remove('hot'); ring.classList.remove('grab'); });
+    const loop = () => {
+      rx += (dx - rx) * 0.18; ry += (dy - ry) * 0.18;
+      ring.style.transform = 'translate(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px) translate(-50%,-50%)';
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  }
+
+  initReveals() {
+    if (!this.root) { requestAnimationFrame(() => this.initReveals()); return; }
+    const els = this.root.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach((el) => el.classList.add('in')); return; }
+    const io = new IntersectionObserver((ents) => {
+      ents.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach((el) => io.observe(el));
+    this._revealSafety = setTimeout(() => els.forEach((el) => el.classList.add('in')), 4000);
+
+    // Service tickets — stack in one-by-one, reverse on scroll up
+    const cards = Array.from(this.root.querySelectorAll('.svc-card'));
+    if (cards.length) {
+      cards.forEach((el, i) => { el.classList.add(i % 2 === 0 ? 'from-left' : 'from-right'); });
+      let fired = false;
+      const sio = new IntersectionObserver((ents) => {
+        fired = true;
+        ents.forEach((e) => { e.target.classList.toggle('in', e.isIntersecting); });
+      }, { threshold: 0.45, rootMargin: '0px 0px -12% 0px' });
+      cards.forEach((el) => sio.observe(el));
+      // Safety: if the observer never fires, guarantee the pricing is visible
+      this._svcSafety = setTimeout(() => { if (!fired) cards.forEach((el) => el.classList.add('in')); }, 3500);
+    }
+  }
+
+  initNav() {
+    if (!this.root) return;
+    const nav = this.root.querySelector('#nav');
+    if (!nav) return;
+    const onScroll = () => {
+      if (window.scrollY > 40) {
+        nav.style.background = 'rgba(26,3,9,.94)';
+        nav.style.borderBottomColor = 'rgba(246,227,184,.12)';
+        nav.style.paddingTop = '14px';
+        nav.style.paddingBottom = '14px';
+      } else {
+        nav.style.background = 'transparent';
+        nav.style.borderBottomColor = 'transparent';
+        nav.style.paddingTop = '22px';
+        nav.style.paddingBottom = '22px';
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  wireReels() {
+    if (!this.root) { requestAnimationFrame(() => this.wireReels()); return; }
+    this.root.querySelectorAll('[data-reel]').forEach((vp) => {
+      const cell = vp.querySelector('.reel-cell');
+      if (!cell || cell._wired) return;
+      cell._wired = true;
+      const W = parseFloat(cell.style.width) || cell.offsetWidth;
+      const H = parseFloat(cell.style.height) || cell.offsetHeight;
+      const world = document.createElement('div');
+      world.className = 'reel-world';
+      world.style.transformOrigin = '0 0';
+      const skew = document.createElement('div');
+      skew.className = 'reel-skew';
+      skew.style.transformOrigin = '50% 50%';
+      world.appendChild(skew);
+      const getScale = () => (window.innerWidth <= 560 ? 0.5 : (window.innerWidth <= 900 ? 0.72 : 1));
+      let S = getScale();
+      vp.removeChild(cell);
+      vp.appendChild(world);
+      for (let r = 0; r < 3; r++) {
+        for (let c = 0; c < 3; c++) {
+          const node = (r === 0 && c === 0) ? cell : cell.cloneNode(true);
+          node.style.left = (c * W) + 'px';
+          node.style.top = (r * H) + 'px';
+          skew.appendChild(node);
+        }
+      }
+      const tiles = world.querySelectorAll('.gtile');
+      tiles.forEach((el) => { el.style.transform = 'rotate(' + ((parseFloat(el.style.getPropertyValue('--rot')) || 0)) + 'deg)'; });
+      let x = 0, y = 0, tx = 0, ty = 0, vx = 0, vy = 0, skx = 0, sky = 0, px = 0, py = 0;
+      tx = (vp.clientWidth / S - W) / 2; ty = (vp.clientHeight / S - H) / 2; x = tx; y = ty; px = x; py = y;
+      let dragging = false, sPX = 0, sPY = 0, sTX = 0, sTY = 0, lPX = 0, lPY = 0, lT = 0, moved = false, downTile = null;
+      const wrap = (v, s) => ((v % s) + s) % s;
+      const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+      const down = (e) => {
+        dragging = true; moved = false; vp.classList.add('drag');
+        downTile = (e.target.closest && e.target.closest('.gtile')) || null;
+        sPX = e.clientX; sPY = e.clientY; sTX = tx; sTY = ty;
+        lPX = e.clientX; lPY = e.clientY; vx = 0; vy = 0;
+        try { vp.setPointerCapture(e.pointerId); } catch (_) {}
+      };
+      const move = (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - sPX, dy = e.clientY - sPY;
+        if (Math.abs(dx) > 4 || Math.abs(dy) > 4) moved = true;
+        tx = sTX + dx; ty = sTY + dy;
+        vx = e.clientX - lPX; vy = e.clientY - lPY;
+        lPX = e.clientX; lPY = e.clientY; lT = e.timeStamp || performance.now();
+      };
+      const up = (e) => {
+        if (!dragging) return;
+        dragging = false; vp.classList.remove('drag');
+        const now = (e && e.timeStamp) || performance.now();
+        if (now - lT > 90) { vx = 0; vy = 0; }
+        else { vx = clamp(vx * 1.25, -55, 55); vy = clamp(vy * 1.25, -55, 55); }
+      };
+      vp.addEventListener('pointerdown', down);
+      vp.addEventListener('pointermove', move);
+      vp.addEventListener('pointerup', up);
+      vp.addEventListener('pointercancel', up);
+      vp.addEventListener('lostpointercapture', up);
+      vp.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+      vp.addEventListener('click', (e) => {
+        if (moved || !downTile) return;
+        const im = downTile.querySelector('img');
+        const capEl = downTile.querySelector('div[style*="uppercase"]');
+        if (im && this._openPhoto) this._openPhoto(im.getAttribute('src'), capEl ? capEl.textContent : '');
+      });
+      vp.addEventListener('dragstart', (e) => e.preventDefault());
+      window.addEventListener('resize', () => {
+        const ns = getScale();
+        if (ns === S) return;
+        S = ns;
+        tx = (vp.clientWidth / S - W) / 2; ty = (vp.clientHeight / S - H) / 2; x = tx; y = ty;
+      });
+      const frame = () => {
+        if (!dragging) {
+          if (Math.abs(vx) > 0.05) { tx += vx; vx *= 0.92; } else vx = 0;
+          if (Math.abs(vy) > 0.05) { ty += vy; vy *= 0.92; } else vy = 0;
+        }
+        x = tx; y = ty;
+        const mdx = x - px, mdy = y - py; px = x; py = y;
+        skx += (clamp(-mdx * 0.35, -10, 10) - skx) * 0.12;
+        sky += (clamp(-mdy * 0.22, -7, 7) - sky) * 0.12;
+        const ox = wrap(x, W), oy = wrap(y, H);
+        world.style.transform = 'translate3d(' + (ox - W).toFixed(2) + 'px,' + (oy - H).toFixed(2) + 'px,0) scale(' + S + ')';
+        skew.style.transform = 'skewX(' + skx.toFixed(2) + 'deg) skewY(' + sky.toFixed(2) + 'deg)';
+        requestAnimationFrame(frame);
+      };
+      requestAnimationFrame(frame);
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const c = new Component();
+  c.root = document.getElementById('dc-root');
+  const next = document.getElementById('rev-next');
+  const prev = document.getElementById('rev-prev');
+  if (next) next.addEventListener('click', function () { c._engage(); c.setState(function (s) { return { top: s.top + 1 }; }); });
+  if (prev) prev.addEventListener('click', function () { c._engage(); c.setState(function (s) { return { top: s.top - 1 }; }); });
+
+  // Map: a transparent veil keeps the custom paw cursor following while hovering the
+  // cross-origin Google map (the page can't track the pointer once it's inside the iframe).
+  // Clicking drops the veil so the map becomes pannable; leaving the map restores it.
+  const mapFrame = document.getElementById('map-frame');
+  if (mapFrame) {
+    const veil = mapFrame.querySelector('.map-veil');
+    if (veil) {
+      veil.addEventListener('pointerdown', function () { mapFrame.classList.add('map-live'); });
+      mapFrame.addEventListener('mouseleave', function () { mapFrame.classList.remove('map-live'); });
+    }
+  }
+
+  c.componentDidMount();
+});
+</script>
+</body>
+</html>
